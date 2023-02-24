@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    height: 100vh;
+    background-image:url(peliculas.jpg);
+    background-color: rgba(0, 0, 0, 0.875);
+    
+  }
+  .container {
+    font-size: 16px;
+    width: 90vw;
+    max-width: 37.5em;
+    padding: 3em 1.8em;
+   background-color: rgba(0, 0, 0, 0.957);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 0.6em;
+    box-shadow: 1.2em 2em 3em rgba(0, 0, 0, 0);
+  }
+
+  #resultado {
+    color: #ffffff;
+  }
+  .info {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    align-items: center;
+    margin-top: 1.2em;
+  }
+  .poster {
+    width: 200%;
+  }
+  h2 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 15px;
+    
+  }
+  .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0 0.9em 0;
+  }
+  .rating img {
+    width: 27px;
+  }
+  .rating h4 {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .details {
+    display: flex;
+    font-size: 18px;
+    gap: 15px;
+    justify-content: center;
+    color: #a0a0a0;
+    margin: 15px 0;
+    font-weight: 300;
+  }
+  .genero {
+    display: flex;
+    justify-content: space-around;
+  }
+  .genero div {
+    border: 1px solid #ff0000;
+    background-color: #a0a0a069;
+    font-size: 12px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: 300;
+  }
+  h3 {
+    font-weight: 500;
+    margin-top: 15px;
+  }
+  p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 15px;
+    text-align: justify;
+    color: #ffffff;
+  }
+  .msg {
+    text-align: center;
+  }
+  
+    .container {
+      font-size: 14px;
+    }
+    .info {
+      grid-template-columns: 450px;
+    }
+    .poster {
+      margin: auto;
+      width: auto;
+      max-height: 350px;
+
+    }
+  
