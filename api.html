@@ -2,19 +2,76 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pliculas.free</title>
+    <title>peliculas.free</title>
     <link rel="stylesheet" href="api.css" />
     <link rel="shortcut icon" href="icon.png">
   </head>
   <body>
     <div class="container">
       <div class="buscar">
-        
-      
+        <input type="text" id="inputPelicula" placeholder="Buscar película...">
+        <button onclick="buscarPelicula()">Buscar</button>
+      </div>
       <div id="resultado"></div>
     </div>
     
     <script src="api.js"></script>
-    
+    <script>
+      let buscarPelicula = () => {
+        let nombrePelicula = document.getElementById("inputPelicula").value.trim();
+        let resultado = document.getElementById("resultado");
+
+        if (nombrePelicula.length <= 0) {
+          resultado.innerHTML = `<h3 class="msg">Ingresa el nombre de la película</h3>`;
+        } else {
+          let pelicula = `http://www.omdbapi.com/?t=${nombrePelicula}&apikey=deced15d`;
+
+          fetch(pelicula)
+            .then((resp) => resp.json())
+            .then((data) => {
+              if (data.Response == "True") {
+                resultado.innerHTML = `
+                  <div class="info">
+                      <img src=${data.Poster} class="poster">
+                      
+                      <div>
+                          <h2>${data.Title}</h2>
+                          <div class="rating">
+                              <img src="star.png">
+                              <h4>${data.imdbRating}</h4>
+                          </div>
+                          <div class="details">
+                              <span>${data.Rated}</span>
+                              <span>${data.Year}</span>
+                              <span>${data.Runtime}</span>
+                          </div>
+                          <div class="genero">
+                              <div>${data.Genre.split(",").join("</div><div>")}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <h3>Descripción:</h3>
+                  <p>${data.Plot}</p>
+                  <h3>Elenco:</h3>
+                  <p>${data.Actors}</p>
+                `;
+              } else {
+                resultado.innerHTML = `<h3 class='msg'>No encontramos "${nombrePelicula}". Intenta con otra búsqueda.</h3>`;
+              }
+            })
+            .catch(() => {
+              resultado.innerHTML = `<h3 class="msg">Hubo un error al buscar la película.</h3>`;
+            });
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("inputPelicula").addEventListener("keypress", (event) => {
+          if (event.key === "Enter") {
+            buscarPelicula();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
